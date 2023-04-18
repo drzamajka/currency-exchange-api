@@ -41,4 +41,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Generowanie nowego tokenu JWT dla użytkownika.
+     *
+     * @return string
+     */
+    public function generateAccessToken($appName)
+    {
+        $token = $this->createToken($appName)->accessToken;
+        return $token;
+    }
 }
